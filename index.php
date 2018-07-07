@@ -1,5 +1,7 @@
 <?php
+    require __DIR__ . '/App/Core/Config.php';
     require __DIR__ . '/vendor/autoload.php';
+    use \App\Core\Database;
     use \App\Core\Router;
 
     require_once "./app/core/Helpers.php";
