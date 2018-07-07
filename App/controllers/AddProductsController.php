@@ -1,4 +1,7 @@
 <?php
     namespace App\controllers;
 
-    class AddProductsController extends \App\Core\BaseController {}
+    class AddProductsController extends \App\Core\BaseController
+    {
+        
+    }

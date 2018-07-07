@@ -5,11 +5,13 @@
         private $_title = 'Title';
         private $_description = 'Description';
 
-        public function getTitle(): string {
+        public function getTitle(): string
+        {
             return $this->_title;
         }
 
-        public function getDescription(): string {
+        public function getDescription(): string
+        {
             return $this->_description;
         }
     }

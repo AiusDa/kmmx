@@ -44,7 +44,7 @@ class Router {
             $controller = new $ctrlName();
             require_once $this->routes[$uri]['view'];
         else :
-            $ctrlName = "\App\controllers\\$ctrlName" . $this->routes[$uri]['controller'];
+            $ctrlName = "\App\controllers\\" . $this->routes['/not-found']['controller'];
             $controller = new $ctrlName();
             require_once  $this->routes['/not-found']['view'];
         endif;

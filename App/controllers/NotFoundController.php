@@ -1,4 +1,7 @@
 <?php
     namespace App\controllers;
 
-    class NotFoundController extends \App\Core\BaseController {}
+    class NotFoundController extends \App\Core\BaseController
+    {
+        
+    }
