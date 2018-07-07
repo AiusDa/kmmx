@@ -28,7 +28,7 @@ class Router {
         $ctrlName .= 'Controller';
         $this->routes[$uri] = [
             'view' => VIEWS_DIR . "/$view.phtml",
-            'controller' => CTRLS_DIR . "/$ctrlName.php"
+            'controller' => $ctrlName
         ];
     }
 
@@ -40,10 +40,12 @@ class Router {
     public function loadView(string $uri)
     {
         if(isset($this->routes[$uri])) :
-            require_once $this->routes[$uri]['controller'];
+            $ctrlName = "\App\controllers\\" . $this->routes[$uri]['controller'];
+            $controller = new $ctrlName();
             require_once $this->routes[$uri]['view'];
         else :
-            require_once $this->routes['/not-found']['controller'];
+            $ctrlName = "\App\controllers\\$ctrlName" . $this->routes[$uri]['controller'];
+            $controller = new $ctrlName();
             require_once  $this->routes['/not-found']['view'];
         endif;
     }

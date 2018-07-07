@@ -1,6 +1,6 @@
 <?php
     require __DIR__ . '/vendor/autoload.php';
-    use App\Core\Router;
+    use \App\Core\Router;
 
     require_once "./app/core/Helpers.php";
     define('VIEWS_DIR', __DIR__ . "/App/views");
