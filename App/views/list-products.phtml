@@ -1,3 +1,6 @@
+<?php
+    $products = $controller->getProducts();
+?>
 <!doctype html>
 <html lang="es-MX">
 <?php include(VIEWS_DIR . "/partials/head.phtml"); ?>
@@ -5,6 +8,13 @@
     <?php include(VIEWS_DIR . "/partials/header.phtml"); ?>
     <main class="container">
         <h1>Lista de productos</h1>
+        <?php
+            if ($products->num_rows > 0) {
+                while($row = $products->fetch_assoc()) {
+                    echo "id: " . $row["ID"] . " - Name: " . $row["PRODUCT_NAME"] . "<br>";
+                }
+            }
+        ?>
     </main>
     <?php include(VIEWS_DIR . "/partials/footer.phtml"); ?>
     <?php include(VIEWS_DIR . "/partials/scripts.phtml"); ?>

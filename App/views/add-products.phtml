@@ -1,14 +1,41 @@
+<?php
+    if($_SERVER["REQUEST_METHOD"] === "POST") {
+        $productName = $_POST["product_name"];
+        $sku = $_POST["sku"];
+        $price = $_POST["price"];
+        $qty = $_POST["qty"];
+        if(!$controller->create($productName, $sku, $price, $qty)) {
+            $error = "Hubo un error al guardar el producto";
+        }
+
+    }
+?>
 <!doctype html>
 <html lang="es-MX">
 <?php include(VIEWS_DIR . "/partials/head.phtml"); ?>
 <body>
     <?php include(VIEWS_DIR . "/partials/header.phtml"); ?>
     <main class="container">
+        <?php 
+            if(!isset($error)) {
+        ?>
+            <div class="alert alert-success" role="alert">
+                Producto agregado correctamente
+            </div>
+        <?php
+            } else {
+        ?>
+            <div class="alert alert-danger" role="alert">
+                <?php echo $error; ?>
+            </div>
+        <?php
+            }
+        ?>
         <h1>Agregar productos</h1>
-        <form action="/api/V1/products" method="POST" enctype="multipart/form-data">
+        <form action="/add-products" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="product_name">Nombre del producto</label>
-                <input type="text" required
+                <input type="text"
                        class="form-control"
                        id="product_name"
                        name="product_name"
@@ -26,7 +53,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">$</span>
                 </div>
-                <input type="text" required
+                <input type="text"
                        class="form-control"
                        id="price"
                        name="price"
